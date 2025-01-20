@@ -1,8 +1,9 @@
 div {
-	border-radius: 5px;
+	border: 10px solid red;
+	border-radius: 20px;
 	display: inline-block;
 	padding: 4px;
-	background-color: #111111;
+	background-color: #641414;
 }
 a {
 	display: inline-block;
@@ -10,7 +11,7 @@ a {
 	font-family: calibri;
 }
 /* id, class */
-#main {
+canvas#main {
 	background-color: #000;
 	top: 0;
 	left: 0;
@@ -18,13 +19,17 @@ a {
 	z-index: -1;
 }
 .sliders {
-	display: inline-block;	
+	display: inline-block;
+	border: 6px solid red;
+	padding: 5px;
 }
 .title {
 	font-family: Tahoma;
 	color: white;
 	margin: 0px;
-	display: inline-block;
+	position: absolute;
+	z-index: 4;
+	font-size: large;
 }
 .text {
 	font-family: calibri;
