@@ -11,6 +11,8 @@ const ClampingSpeed = 1.1;
 let minHeight = 10;
 let maxHeight = 25;
 
+let orientation = 0;
+
 const defaultvelocity = 0;
 
 function DoDropletRain(index, drop) {
@@ -18,11 +20,11 @@ function DoDropletRain(index, drop) {
 	let modulus = index%2;
 	
 	if (modulus == 0) {
-		drop.y += drop.velocity * (ClampingSpeed + .2) - Math.floor(drop.height / 9);
+		drop.y += drop.velocity * (ClampingSpeed + .2);
 		// drop.x = Math.floor(Math.random() * canvas.width);
 	}
 	else { 
-		drop.y += drop.velocity * ClampingSpeed - Math.floor(minHeight / 9);
+		drop.y += drop.velocity * ClampingSpeed;
 
 		// drop.x = Math.floor(Math.random() * canvas.width);
 	};
@@ -62,7 +64,7 @@ function startAnimation(dropCount, velocity, width) {
 				drops[i].x = 0;
 			}
 
-			if(drops[i].y > canvas.height) drops[i].y = 0
+			if(drops[i].y > canvas.height) drops[i].y = 0;
 
 			ctx.fillRect(drops[i].x, drops[i].y, drops[i].width, drops[i].height);
 		}
