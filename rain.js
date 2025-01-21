@@ -11,8 +11,6 @@ const ClampingSpeed = 1.1;
 let minHeight = 10;
 let maxHeight = 25;
 
-let orientation = 0;
-
 const defaultvelocity = 0;
 
 function DoDropletRain(index, drop) {
