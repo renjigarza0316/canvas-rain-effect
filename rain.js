@@ -4,12 +4,12 @@ let ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
+console.log(window.outerHeight, window.outerWidth);
+
 let drops = [];
 
 const ClampingSpeed = 1.1;
 
-let minHeight = 10;
-let maxHeight = 25;
 
 const defaultvelocity = 0;
 
@@ -18,11 +18,11 @@ function DoDropletRain(index, drop) {
 	let modulus = index%2;
 	
 	if (modulus == 0) {
-		drop.y += drop.velocity * (ClampingSpeed + .2);
+		drop.y += drop.velocity * ClampingSpeed;
 		// drop.x = Math.floor(Math.random() * canvas.width);
 	}
 	else { 
-		drop.y += drop.velocity * ClampingSpeed;
+		drop.y += drop.velocity;
 
 		// drop.x = Math.floor(Math.random() * canvas.width);
 	};
@@ -30,7 +30,7 @@ function DoDropletRain(index, drop) {
 
 
 
-function startAnimation(dropCount, velocity, width) {
+function startAnimation(dropCount, velocity, width, minHeight, maxHeight) {
 	drops = [];
 	
 	for (i = 0; i < dropCount; i++) {
@@ -45,18 +45,14 @@ function startAnimation(dropCount, velocity, width) {
 		drops[i] = current;
 	}
 
-
-
 	function loop() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = "#4a4a4a";
 		// scrolls the rain down on the y axis according to the velocity
 		for (i = 0; i < drops.length; i++) {
-			// drops[i].y += drops[i].velocity;
 
 
 			DoDropletRain(i, drops[i])
-			// console.log(drops[i])
 
 			if(drops[i].x > canvas.width) {
 				drops[i].x = 0;
@@ -82,14 +78,11 @@ function callAnimation() {
 	let width = parseInt(document.getElementById("width").value);
 	let Height = parseInt(document.getElementById("Height").value);
 	
-	document.getElementById("dropLabel").innerHTML = String(dropCount);
-	document.getElementById("velocityLabel").innerHTML = String(velocity);
-	document.getElementById("widthLabel").innerHTML = String(width);
-	document.getElementById("HeightLabel").innerHTML = String(Height);
+	document.getElementById("dropLabel").innerHTML = dropCount;
+	document.getElementById("velocityLabel").innerHTML = velocity;
+	document.getElementById("widthLabel").innerHTML = width;
+	document.getElementById("HeightLabel").innerHTML = Height;
 
-	minHeight = Height;
-	maxHeight = Height + 15;
-
-	startAnimation(dropCount, velocity, width); 
+	startAnimation(dropCount, velocity, width, Height, Height + 15); 
 }
 callAnimation();

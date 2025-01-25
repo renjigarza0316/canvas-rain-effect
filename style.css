@@ -4,6 +4,8 @@ div {
 	display: inline-block;
 	padding: 4px;
 	background-color: #b23232b7;
+	border: 6px solid red;
+	padding: 5px;
 }
 a {
 	display: inline-block;
@@ -18,11 +20,7 @@ canvas#main {
 	position: absolute;
 	z-index: -1;
 }
-.sliders {
-	display: inline-block;
-	border: 6px solid red;
-	padding: 5px;
-}
+
 .title {
 	font-family: Tahoma;
 	color: white;
@@ -31,7 +29,7 @@ canvas#main {
 	z-index: 4;
 	font-size: large;
 }
-.text {
+p, label {
 	font-family: calibri;
 	color: white;
 	margin: 0px;
@@ -39,9 +37,11 @@ canvas#main {
 /* input slider styles */
 input[type="range"] { -webkit-appearance: none; }
 input[type="range"]:focus { outline: none; }
+
 input[type="range"]::-webkit-slider-runnable-track {
 	background: #468735;
 	height: 5px;
+	cursor: w-resize;
 }
 input[type="range"]::-moz-range-track {
 	background: #468735;
